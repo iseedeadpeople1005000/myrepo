@@ -1,0 +1,16 @@
+{% extends 'maintemplate.html' %}
+
+{% block sign %}
+<hr>
+<h5>
+		<form action="{{ url }}" method = "post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="button" value="Зарегистрироваться">
+        </form>
+        {% if error %}
+            <h1>{{ error }}</h1>
+        {% endif %}
+</h5>
+
+{% endblock %}

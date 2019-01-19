@@ -1,0 +1,19 @@
+{% extends 'maintemplate.html' %}
+{% load staticfiles %}
+{% block AllVideo %}
+    {% for con in content %}
+    <hr>
+    <iframe width="853" height="480" src="{{ con.0.Video_url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="/video/get/{{ con.0.id }}/"><h2>{{ con.0.Video_name }}</h2></a>
+    <h5><i>{{ con.0.Video_discription }}</i></h5>
+    <h5>Дата публикации: {{ con.0.Video_date }}</h5>
+    <b><img src="{% static 'like.png' %}" height="60px" class="likevideo" id="{{ con.0.id }}"><h3 id="{{ con.0.id }}video">{{ con.0.Video_likes }}</h3></b>
+        {% for com in con.1 %}
+            <hr>
+            <h5>{{ com.0.Comment_text }}</h5>
+            <h5><b>Автор: {{ com.1 }}</b></h5>
+            <h5>Дата публикации: {{ com.0.Comment_date }}</h5>
+            <h5>Likes: {{ com.0.Comment_likes }}</h5>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
